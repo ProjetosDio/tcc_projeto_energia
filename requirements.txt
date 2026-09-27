@@ -1,0 +1,8 @@
+psycopg2-binary
+pandas
+python-dotenv
+psycopg2
+apache-airflow
+apache-airflow-providers-postgres
+tenacity==8.5.0
+requests

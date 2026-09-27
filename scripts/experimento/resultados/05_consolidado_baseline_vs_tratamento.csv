@@ -1,0 +1,5 @@
+﻿Tipo de Falha,Baseline Sucesso,Tratamento Sucesso,Baseline %,Tratamento %
+ARQUIVO_AUSENTE,0,30,0.0,100.0
+CONEXAO,0,30,0.0,100.0
+DADOS_NULOS,0,30,0.0,100.0
+SCHEMA,0,0,0.0,0.0

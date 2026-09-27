@@ -1,0 +1,68 @@
+FEATURE_AUTOCORRECAO setada para ON
+=== Iniciando: grupo=TRATAMENTO tipo_falha=NENHUMA iteracoes=30 ===
+  [1] id_experimento=271 tipo_falha=NENHUMA
+    state=success id_carga_afetada=241
+  [2] id_experimento=272 tipo_falha=NENHUMA
+    state=success id_carga_afetada=242
+  [3] id_experimento=273 tipo_falha=NENHUMA
+    state=success id_carga_afetada=243
+  [4] id_experimento=274 tipo_falha=NENHUMA
+    state=success id_carga_afetada=244
+  [5] id_experimento=275 tipo_falha=NENHUMA
+    state=success id_carga_afetada=245
+  [6] id_experimento=276 tipo_falha=NENHUMA
+    state=success id_carga_afetada=246
+  [7] id_experimento=277 tipo_falha=NENHUMA
+    state=success id_carga_afetada=247
+  [8] id_experimento=278 tipo_falha=NENHUMA
+    state=success id_carga_afetada=248
+  [9] id_experimento=279 tipo_falha=NENHUMA
+    state=success id_carga_afetada=249
+  [10] id_experimento=280 tipo_falha=NENHUMA
+    state=success id_carga_afetada=250
+  [11] id_experimento=281 tipo_falha=NENHUMA
+    state=success id_carga_afetada=251
+  [12] id_experimento=282 tipo_falha=NENHUMA
+    state=success id_carga_afetada=252
+  [13] id_experimento=283 tipo_falha=NENHUMA
+    state=success id_carga_afetada=253
+  [14] id_experimento=284 tipo_falha=NENHUMA
+    state=success id_carga_afetada=254
+  [15] id_experimento=285 tipo_falha=NENHUMA
+    state=success id_carga_afetada=255
+  [16] id_experimento=286 tipo_falha=NENHUMA
+    state=success id_carga_afetada=256
+  [17] id_experimento=287 tipo_falha=NENHUMA
+    state=success id_carga_afetada=257
+  [18] id_experimento=288 tipo_falha=NENHUMA
+    state=success id_carga_afetada=258
+  [19] id_experimento=289 tipo_falha=NENHUMA
+    state=success id_carga_afetada=259
+  [20] id_experimento=290 tipo_falha=NENHUMA
+    state=success id_carga_afetada=260
+  [21] id_experimento=291 tipo_falha=NENHUMA
+    state=success id_carga_afetada=261
+  [22] id_experimento=292 tipo_falha=NENHUMA
+    state=success id_carga_afetada=262
+  [23] id_experimento=293 tipo_falha=NENHUMA
+    state=success id_carga_afetada=263
+  [24] id_experimento=294 tipo_falha=NENHUMA
+    state=success id_carga_afetada=264
+  [25] id_experimento=295 tipo_falha=NENHUMA
+    state=success id_carga_afetada=265
+  [26] id_experimento=296 tipo_falha=NENHUMA
+    state=success id_carga_afetada=266
+  [27] id_experimento=297 tipo_falha=NENHUMA
+    state=success id_carga_afetada=267
+  [28] id_experimento=298 tipo_falha=NENHUMA
+    state=success id_carga_afetada=268
+  [29] id_experimento=299 tipo_falha=NENHUMA
+    state=success id_carga_afetada=269
+  [30] id_experimento=300 tipo_falha=NENHUMA
+    state=success id_carga_afetada=270
+
+=== Resumo ===
+Grupo: TRATAMENTO | Tipo de falha: NENHUMA
+Iterações executadas: 30
+  success: 30
+Tempo total: 5378.6s (89.6 min)

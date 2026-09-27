@@ -1,0 +1,125 @@
+name: projeto_TCC_energia
+
+x-airflow-common:
+  &airflow-common
+  image: apache/airflow:2.9.3
+  environment:
+    AIRFLOW__CORE__EXECUTOR: LocalExecutor
+    AIRFLOW__CORE__LOAD_EXAMPLES: "false"
+    AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@airflow-postgres:5432/airflow
+    # Habilita autenticação HTTP Basic na API REST (usada pelo runner do
+    # experimento em scripts/experimento/runner.py). O backend de sessão
+    # continua ativo também, então a UI web não é afetada.
+    AIRFLOW__API__AUTH_BACKENDS: "airflow.api.auth.backend.basic_auth,airflow.api.auth.backend.session"
+    DB_HOST: energia-postgres
+    DB_PORT: 5432
+    DB_NAME: energia_db
+    DB_USER: energia_user
+    DB_PASS: energia_pass
+  volumes:
+    - ./airflow/dags:/opt/airflow/dags
+    - airflow_logs:/opt/airflow/logs
+    - ./airflow/plugins:/opt/airflow/plugins
+    - ../scripts:/opt/airflow/scripts
+    - ../sql:/opt/airflow/sql
+    - ../data:/opt/airflow/data
+  user: "${AIRFLOW_UID:-50000}:0"
+  depends_on:
+    - airflow-postgres
+    - energia-postgres
+  networks:
+    - energia-network
+
+services:
+  # Postgres do Airflow
+  airflow-postgres:
+    image: postgres:16
+    container_name: airflow-postgres
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: airflow
+    networks:
+      - energia-network
+
+  # Postgres do Energia Data Warehouse
+  energia-postgres:
+    image: postgres:16
+    container_name: energia-postgres #Host
+    environment:
+      POSTGRES_USER: energia_user
+      POSTGRES_PASSWORD: energia_pass
+      POSTGRES_DB: energia_db
+    ports:
+      - "5432:5432"
+    volumes:
+    #Inicia docker-entrypoint-initdb apenas na primeira vez que o container é iniciado
+    #Com isso todos esses scripts são executados apenas uma vez
+      - postgres_data:/var/lib/postgresql/data
+      - ../sql/init/01_criar_esquemas.sql:/docker-entrypoint-initdb.d/01_criar_esquemas.sql
+      - ../sql/init/02_criar_public_tbl_controle_carga.sql:/docker-entrypoint-initdb.d/02_criar_public_tbl_controle_carga.sql
+      - ../sql/bronze/01_criar_tabelas_bronze.sql:/docker-entrypoint-initdb.d/03_bronze_criar_tabelas.sql
+      - ../sql/silver/01_criar_tabelas_silver.sql:/docker-entrypoint-initdb.d/04_silver_criar_tabelas.sql
+      - ../sql/gold/01_criar_visualizacoes_gold.sql:/docker-entrypoint-initdb.d/05_gold_criar_visualizacoes.sql
+      - ../sql/init/03_migracao_autocorrecao.sql:/docker-entrypoint-initdb.d/06_migracao_autocorrecao.sql
+
+    restart: unless-stopped
+    networks:
+      - energia-network
+
+  # pgAdmin (opcional)
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@energia.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "8080:80"
+    networks:
+      - energia-network
+
+  airflow-init:
+    <<: *airflow-common
+    command: >
+      bash -c "
+      airflow db migrate &&
+      airflow users create -u admin -p admin -f Energia -l Admin -r Admin -e admin@energia.com &&
+      airflow variables set feature_autocorrecao ON
+      "
+
+  airflow-webserver:
+    <<: *airflow-common
+    command: webserver
+    ports:
+      - "8088:8080"
+    depends_on:
+      airflow-init:
+        condition: service_completed_successfully
+
+  airflow-scheduler:
+    <<: *airflow-common
+    command: scheduler
+    depends_on:
+      airflow-init:
+        condition: service_completed_successfully
+
+  airflow-conn-init:
+    <<: *airflow-common
+    command: >
+      bash -c "
+      sleep 30 &&
+      airflow dags unpause energia_pipeline &&
+      (airflow connections add energia_postgres --conn-type postgres --conn-host energia-postgres --conn-port 5432 --conn-login energia_user --conn-password energia_pass --conn-schema energia_db 2>/dev/null && echo 'Conexão energia_postgres criada com sucesso' || echo 'Conexão energia_postgres já existia')
+      "
+    depends_on:
+      airflow-init:
+        condition: service_completed_successfully
+
+networks:
+  energia-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  airflow_logs:

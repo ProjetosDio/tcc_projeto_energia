@@ -1,0 +1,5 @@
+﻿tipo_falha_injetada,execucoes,auto_resolvidas,pct_auto_resolvido
+CONEXAO,30,30,100.00
+SCHEMA,30,0,0.00
+DADOS_NULOS,30,30,100.00
+ARQUIVO_AUSENTE,30,30,100.00

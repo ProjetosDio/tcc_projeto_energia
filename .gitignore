@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+
+# Segredos / variáveis de ambiente
+.env
+.env.*
+!.env.example
+
+# Logs gerados em runtime (Airflow, scripts). As evidências versionadas do
+# experimento ficam em docs/evidencias/ e têm SHA-256 registrado em
+# docs/evidencias/SHA256SUMS.txt, então são reincluídas explicitamente.
+logs/
+*.log
+!docs/evidencias/
+!docs/evidencias/*.log
+
+# Dados/volumes do Postgres e dumps de banco (o docker-compose usa volumes
+# nomeados, mas isto protege contra bind mounts locais)
+postgres_data/
+pgdata/
+volumes/
+*.dump
+*.backup
+*.sql.gz
+*.tar
+
+# Backups deixados pelos scripts de injeção de falhas
+# (scripts/injecao_falhas/_common.py) e cópia temporária de fallback
+# criada por injetar_arquivo_ausente.py
+*.bkp
+data/input/Amostra_Backup_Fallback.csv
+
+# IDE / SO
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

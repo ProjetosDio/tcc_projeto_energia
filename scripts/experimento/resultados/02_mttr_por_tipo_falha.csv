@@ -1,0 +1,4 @@
+﻿tipo_falha,execucoes_recuperadas,mttr_ms,mttr_s,min_ms,max_ms
+CONEXAO,30,11066.00,11.066,11030,11101
+DADOS_NULOS,30,6.20,0.006,6,8
+ARQUIVO_AUSENTE,30,6.00,0.006,6,6

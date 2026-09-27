@@ -1,0 +1,68 @@
+FEATURE_AUTOCORRECAO setada para OFF
+=== Iniciando: grupo=BASELINE tipo_falha=NENHUMA iteracoes=30 ===
+  [1] id_experimento=241 tipo_falha=NENHUMA
+    state=success id_carga_afetada=211
+  [2] id_experimento=242 tipo_falha=NENHUMA
+    state=success id_carga_afetada=212
+  [3] id_experimento=243 tipo_falha=NENHUMA
+    state=success id_carga_afetada=213
+  [4] id_experimento=244 tipo_falha=NENHUMA
+    state=success id_carga_afetada=214
+  [5] id_experimento=245 tipo_falha=NENHUMA
+    state=success id_carga_afetada=215
+  [6] id_experimento=246 tipo_falha=NENHUMA
+    state=success id_carga_afetada=216
+  [7] id_experimento=247 tipo_falha=NENHUMA
+    state=success id_carga_afetada=217
+  [8] id_experimento=248 tipo_falha=NENHUMA
+    state=success id_carga_afetada=218
+  [9] id_experimento=249 tipo_falha=NENHUMA
+    state=success id_carga_afetada=219
+  [10] id_experimento=250 tipo_falha=NENHUMA
+    state=success id_carga_afetada=220
+  [11] id_experimento=251 tipo_falha=NENHUMA
+    state=success id_carga_afetada=221
+  [12] id_experimento=252 tipo_falha=NENHUMA
+    state=success id_carga_afetada=222
+  [13] id_experimento=253 tipo_falha=NENHUMA
+    state=success id_carga_afetada=223
+  [14] id_experimento=254 tipo_falha=NENHUMA
+    state=success id_carga_afetada=224
+  [15] id_experimento=255 tipo_falha=NENHUMA
+    state=success id_carga_afetada=225
+  [16] id_experimento=256 tipo_falha=NENHUMA
+    state=success id_carga_afetada=226
+  [17] id_experimento=257 tipo_falha=NENHUMA
+    state=success id_carga_afetada=227
+  [18] id_experimento=258 tipo_falha=NENHUMA
+    state=success id_carga_afetada=228
+  [19] id_experimento=259 tipo_falha=NENHUMA
+    state=success id_carga_afetada=229
+  [20] id_experimento=260 tipo_falha=NENHUMA
+    state=success id_carga_afetada=230
+  [21] id_experimento=261 tipo_falha=NENHUMA
+    state=success id_carga_afetada=231
+  [22] id_experimento=262 tipo_falha=NENHUMA
+    state=success id_carga_afetada=232
+  [23] id_experimento=263 tipo_falha=NENHUMA
+    state=success id_carga_afetada=233
+  [24] id_experimento=264 tipo_falha=NENHUMA
+    state=success id_carga_afetada=234
+  [25] id_experimento=265 tipo_falha=NENHUMA
+    state=success id_carga_afetada=235
+  [26] id_experimento=266 tipo_falha=NENHUMA
+    state=success id_carga_afetada=236
+  [27] id_experimento=267 tipo_falha=NENHUMA
+    state=success id_carga_afetada=237
+  [28] id_experimento=268 tipo_falha=NENHUMA
+    state=success id_carga_afetada=238
+  [29] id_experimento=269 tipo_falha=NENHUMA
+    state=success id_carga_afetada=239
+  [30] id_experimento=270 tipo_falha=NENHUMA
+    state=success id_carga_afetada=240
+
+=== Resumo ===
+Grupo: BASELINE | Tipo de falha: NENHUMA
+Iterações executadas: 30
+  success: 30
+Tempo total: 2416.2s (40.3 min)
